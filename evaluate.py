@@ -85,7 +85,14 @@ def main():
         print("Loading model %s..."%args.model)
         state = torch.load(args.model, map_location='cpu')
         if isinstance(state, dict):
-            model = state['model']
+            if 'model' in state:
+                model = state['model']
+            elif 'state_dict_ema' in state:
+                model = state['state_dict_ema'] # compatible to convnext EMA
+            elif 'state_dict' in state:
+                model = state['state_dict']
+            else:
+                raise ValueError("Invalid checkpoint")
         else:
             model = state
         model.eval()
