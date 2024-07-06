@@ -33,12 +33,12 @@ data
 
 ## Quick Start
 
-We provide [scripts](scripts) to reproduce the results in our paper. Our pruned models are also available [here]()
+We provide [scripts](scripts) to reproduce the results in our paper. Our pruned models are also available [here](https://github.com/VainF/Isomorphic-Pruning/releases/tag/v0.1)
 
 #### 1. Downloading our pruned models (Optional)
 ```bash
 mkdir pretrained && cd pretrained
-wget https://www.dropbox.com/s/7z1z1z1z1z1z1z1/pruned_models.zip
+wget https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_4.2G_isomorphic.pth
 ```
 ```
 pretrained
