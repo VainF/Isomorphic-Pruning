@@ -105,3 +105,12 @@ The pruned model will be saved as a ``.pth`` file with the model definition. We 
 # bilinear for ResNet and bicubic for other models
 python evaluate.py --model PATH_TO_PRUNED_MODEL --interpolation bicubic 
 ```
+
+## Acknowledgement
+
+This implementation is based on [Timm](https://github.com/huggingface/pytorch-image-models) and [Torchvision Reference](https://github.com/pytorch/vision/tree/main/references/classification). 
+
+## BibTeX
+
+```bibtex
+```
