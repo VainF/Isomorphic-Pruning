@@ -1,14 +1,12 @@
 import torch_pruning as tp
 import torch
-
-import torch
 import torch.nn as nn
 import typing 
 from torch_pruning.pruner import function
 import timm
 from fastcore.basics import patch_to
-
 import torch.nn.functional as F
+
 
 class IsomorphicPruner(tp.algorithms.MetaPruner):
     def __init__(
