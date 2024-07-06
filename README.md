@@ -2,6 +2,7 @@
 
 Official implementation of the paper [Isomorphic Pruning for Vision Models]().
 
+![intro](assets/intro.png)
 
 ## Pre-requisites
 

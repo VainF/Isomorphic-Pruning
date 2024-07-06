@@ -28,7 +28,6 @@ acc.png
 bak
 pretrained
 ref
-*.png
 *.pdf
 wandb
 pretrained
