@@ -33,9 +33,9 @@ data
 
 ## Quick Start
 
-We provide [scripts](scripts) to reproduce the results in our paper. Our pruned models are also available [here](https://github.com/VainF/Isomorphic-Pruning/releases/tag/v0.1)
-
 #### 1. Downloading our pruned models (Optional)
+The full list of pruned models can be found [here](https://github.com/VainF/Isomorphic-Pruning/releases/tag/v0.1)
+
 ```bash
 mkdir pretrained && cd pretrained
 wget https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_4.2G_isomorphic.pth
@@ -58,7 +58,6 @@ Evaluating pretrained/deit_4.2G_isomorphic.pth...
 100%|███████████████| 782/782 [01:57<00:00,  6.68it/s]
 Accuracy: 0.8241, Loss: 0.8036
 ```
-
 
 
 #### 2. Evaluating pre-trained models from Timm
