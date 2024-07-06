@@ -1,0 +1,1 @@
+python evaluate.py --data-path data/imagenet --model resnet152.tv_in1k --interpolation bilinear --val-resize 256

@@ -1,0 +1,14 @@
+python prune.py --data-path data/imagenet \
+    --model convnext_base.fb_in1k \
+    --pruning-type taylor \
+    --pruning-ratio 0.26 \
+    --train-batch-size 64 \
+    --val-batch-size 64 \
+    --global-pruning \
+    --taylor-batchs 50 \
+    --save-as output/pruned/convnext_8.5G.pth  \
+    --val-resize 256 \
+    --interpolation bicubic \
+    --round-to 2 \
+    --drop 0.1 \
+    --drop-path 0.4 \

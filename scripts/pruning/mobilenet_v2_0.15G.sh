@@ -1,0 +1,11 @@
+python prune.py --data-path data/imagenet \
+    --model mobilenet_v2 \
+    --is-torchvision \
+    --pruning-type taylor \
+    --pruning-ratio 0.27 \
+    --train-batch-size 64 \
+    --val-batch-size 64 \
+    --global-pruning \
+    --save-as output/pruned/mobilenet_v2_0.15G.pth \
+    --val-resize 256 \
+    --interpolation bilinear

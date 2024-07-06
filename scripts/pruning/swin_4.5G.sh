@@ -1,0 +1,11 @@
+python prune.py --data-path data/imagenet \
+    --model swin_base_patch4_window7_224.ms_in1k \
+    --pruning-type taylor \
+    --pruning-ratio 0.47 \
+    --train-batch-size 64 \
+    --val-batch-size 64 \
+    --global-pruning \
+    --taylor-batchs 50 \
+    --save-as output/pruned/swin_4.5G.pth \
+    --val-resize 256 \
+    --head-pruning-ratio 0.0 \

@@ -1,0 +1,22 @@
+torchrun --nproc_per_node=8 --master_port=23355 train.py \
+    --model "output/pruned/deit_2.6G.pth" \
+    --teacher-model regnety_160.deit_in1k \
+    --epochs 300 \
+    --batch-size 256 \
+    --opt adamw \
+    --lr 0.0005 \
+    --wd 0.05 \
+    --lr-scheduler cosineannealinglr \
+    --lr-warmup-method linear \
+    --lr-warmup-epochs 0 \
+    --lr-warmup-decay 0.033 \
+    --amp \
+    --label-smoothing 0.1 \
+    --mixup-alpha 0.8 \
+    --auto-augment ra \
+    --ra-sampler \
+    --random-erase 0.25 \
+    --cutmix-alpha 1.0 \
+    --data-path "data/imagenet" \
+    --output-dir output/finetuned/deit_2.6G \
+    --interpolation bicubic \

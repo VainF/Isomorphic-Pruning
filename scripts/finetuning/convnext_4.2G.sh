@@ -1,0 +1,23 @@
+torchrun --standalone --nproc_per_node=8 train.py \
+    --data-path data/imagenet \
+    --model "output/pruned/convnext_4.2G.pth" \
+    --epochs 300 \
+    --batch-size 256 \
+    --opt adamw \
+    --lr 1e-3 \
+    --wd 0.05 \
+    --lr-scheduler cosineannealinglr \
+    --label-smoothing 0.1 \
+    --mixup-alpha 0.2 \
+    --auto-augment ra \
+    --random-erase 0.25 \
+    --cutmix-alpha 1.0 \
+    --data-path "data/imagenet" \
+    --output-dir output/finetuned/convnext_4.2G \
+    --interpolation bicubic \
+    --model-ema \
+    --model-ema-steps 1 \
+    --model-ema-decay 0.9999 \
+    --ra-reps 1 \
+    --amp \
+    --lr-min 1.0e-07 \
