@@ -100,7 +100,8 @@ class IsomorphicPruner(tp.algorithms.MetaPruner):
             return
         
         ##############################################
-        # 1. Pre-compute importance for each group
+        # 1. Pre-compute importance for each substructure 
+        # and group them by isomorphism
         ##############################################
         global_head_importance = {} # for attn head pruning
         all_groups = []
@@ -123,12 +124,16 @@ class IsomorphicPruner(tp.algorithms.MetaPruner):
                     # no grouping
                     dim_imp = imp
 
+                # Graphs will always be generated in the forwarding order
                 group_tag = ""
                 for dep, _ in group:
-                    group_tag += "%s_%s"%(type(dep.source.module), type(dep.target.module))
-                print(group_tag)
-
+                    # to check the isomorphism, all connected nodes should have the same tag, 
+                    # i.e., the same module type & pruning dim
+                    tag_source = "%s_%s"%(type(dep.source.module), "out" if self.DG.is_out_channel_pruning_fn(dep.handler) else "in")
+                    tag_target = "%s_%s"%(type(dep.target.module), "out" if self.DG.is_out_channel_pruning_fn(dep.handler) else "in")
+                    group_tag += "%s_%s"%(tag_source, tag_target)
                 if group_tag not in isomorphic_groups:
+                    # New isomorphic group
                     isomorphic_groups[group_tag] = []
                 isomorphic_groups[group_tag].append((group, ch_groups, group_size, dim_imp))
 

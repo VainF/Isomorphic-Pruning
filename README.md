@@ -48,7 +48,7 @@ pretrained
 └── deit_4.2G_isomorphic.pth
 ```
 
-You can evluate the pruned models using the following command:
+You can evaluate the pruned models using the following command:
 ```bash
 python evaluate.py --model pretrained/deit_4.2G_isomorphic.pth --interpolation bicubic
 ```
