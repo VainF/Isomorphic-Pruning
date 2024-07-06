@@ -9,8 +9,8 @@ import torch.nn as nn
 import timm
 import torch_pruning as tp
 
-import peval
-peval.forward_patch.patch_timm_forward() # patch timm.forward() to support pruning
+import pbench
+pbench.forward_patch.patch_timm_forward() # patch timm.forward() to support pruning
 
 from tqdm import tqdm
 import argparse
@@ -63,7 +63,7 @@ def prepare_imagenet(imagenet_root, train_batch_size=64, val_batch_size=128, num
 
     print('Parsing dataset...')
     train_dst = ImageFolder(os.path.join(imagenet_root, 'train'), 
-                            transform=peval.data.presets.ClassificationPresetEval(
+                            transform=pbench.data.presets.ClassificationPresetEval(
                                 mean=[0.485, 0.456, 0.406] if use_imagenet_mean_std else [0.5, 0.5, 0.5],
                                 std=[0.229, 0.224, 0.225] if use_imagenet_mean_std else [0.5, 0.5, 0.5],
                                 crop_size=224,
@@ -72,7 +72,7 @@ def prepare_imagenet(imagenet_root, train_batch_size=64, val_batch_size=128, num
                             )
     )
     val_dst = ImageFolder(os.path.join(imagenet_root, 'val'), 
-                          transform=peval.data.presets.ClassificationPresetEval(
+                          transform=pbench.data.presets.ClassificationPresetEval(
                                 mean=[0.485, 0.456, 0.406] if use_imagenet_mean_std else [0.5, 0.5, 0.5],
                                 std=[0.229, 0.224, 0.225] if use_imagenet_mean_std else [0.5, 0.5, 0.5],
                                 crop_size=224,
@@ -162,7 +162,7 @@ def main():
             if isinstance(m, timm.models.vision_transformer.Attention):
                 pruning_ratio_dict[m] = args.head_dim_pruning_ratio
 
-    PrunerCLS = tp.pruner.MetaPruner if args.no_isomorphic else peval.isomorphic_pruner.IsomorphicPruner
+    PrunerCLS = tp.pruner.MetaPruner if args.no_isomorphic else pbench.isomorphic_pruner.IsomorphicPruner
     pruner = PrunerCLS(
         model, 
         example_inputs=example_inputs,
@@ -175,7 +175,7 @@ def main():
         prune_head_dims=True, # prune head_dims
         prune_num_heads=True, # prune num_heads
         head_pruning_ratio=args.head_pruning_ratio, # target sparsity for heads
-        customized_pruners=peval.extension.EXTENDED_PRUNERS, # customized pruners 
+        customized_pruners=pbench.extension.EXTENDED_PRUNERS, # customized pruners 
         round_to=args.round_to, # round to
     )
 
@@ -262,7 +262,7 @@ def main():
                 if i in keeped_idxs:
                     keeped_layers.append(block)
             model.stages[-2].blocks = nn.Sequential(*keeped_layers)
-            peval.utils.set_timm_drop_path(model, args.drop_path)
+            pbench.utils.set_timm_drop_path(model, args.drop_path)
 
     print("========================================")
     print(model)

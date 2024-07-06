@@ -9,13 +9,13 @@ import torchvision
 import torchvision.transforms
 import torch.nn.functional as F
 
-import peval
-peval.forward_patch.patch_timm_forward() # patch timm.forward() to support pruning
+import pbench
+pbench.forward_patch.patch_timm_forward() # patch timm.forward() to support pruning
 
-import peval.utils as utils
-import peval.data.presets as presets
-from peval.data.sampler import RASampler
-from peval.data.transforms import get_mixup_cutmix
+import pbench.utils as utils
+import pbench.data.presets as presets
+from pbench.data.sampler import RASampler
+from pbench.data.transforms import get_mixup_cutmix
 
 from torch import nn
 from torch.utils.data.dataloader import default_collate
@@ -263,7 +263,7 @@ def main(args):
     if torch.distributed.get_rank() == 0:
         wandb.init(
             # set the wandb project where this run will be logged
-            project="PEval", 
+            project="pbench", 
             name=args.model.replace('/', '_'),
             # track hyperparameters and run metadata
             config=args,
@@ -325,7 +325,7 @@ def main(args):
         teacher_model = None
 
     #if args.stochastic_depth > 0.0:
-    #    peval.pruning.set_stochastic_depth(model, args.stochastic_depth)
+    #    pbench.pruning.set_stochastic_depth(model, args.stochastic_depth)
     model.to(device)
     macs, params = tp.utils.count_ops_and_params(model, torch.randn(1, 3, 224, 224).to(device))
     print("macs: {:.2f} G, params: {:.2f} M".format(macs/1e9, params/1e6))

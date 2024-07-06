@@ -8,8 +8,8 @@ from torchvision.transforms.functional import InterpolationMode
 import torch.nn as nn
 import timm
 import torch_pruning as tp
-import peval
-peval.forward_patch.patch_timm_forward() # patch timm.forward() to support pruning on ViT
+import pbench
+pbench.forward_patch.patch_timm_forward() # patch timm.forward() to support pruning on ViT
 
 
 import argparse
@@ -39,7 +39,7 @@ def prepare_imagenet(imagenet_root, train_batch_size=64, val_batch_size=128, num
 
     print('Parsing dataset...')
     train_dst = ImageFolder(os.path.join(imagenet_root, 'train'), 
-                            transform=peval.data.presets.ClassificationPresetEval(
+                            transform=pbench.data.presets.ClassificationPresetEval(
                                 mean=[0.485, 0.456, 0.406] if use_imagenet_mean_std else [0.5, 0.5, 0.5],
                                 std=[0.229, 0.224, 0.225] if use_imagenet_mean_std else [0.5, 0.5, 0.5],
                                 crop_size=224,
@@ -48,7 +48,7 @@ def prepare_imagenet(imagenet_root, train_batch_size=64, val_batch_size=128, num
                             )
     )
     val_dst = ImageFolder(os.path.join(imagenet_root, 'val'), 
-                          transform=peval.data.presets.ClassificationPresetEval(
+                          transform=pbench.data.presets.ClassificationPresetEval(
                                 mean=[0.485, 0.456, 0.406] if use_imagenet_mean_std else [0.5, 0.5, 0.5],
                                 std=[0.229, 0.224, 0.225] if use_imagenet_mean_std else [0.5, 0.5, 0.5],
                                 crop_size=224,
