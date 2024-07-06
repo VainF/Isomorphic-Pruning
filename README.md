@@ -1,6 +1,6 @@
 # Isomorphic Pruning
 
-Official implementation of the paper [Isomorphic Pruning for Vision Models]().
+Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Models]().
 
 ![intro](assets/intro.png)
 
