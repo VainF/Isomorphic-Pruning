@@ -113,4 +113,10 @@ This implementation is based on [Timm](https://github.com/huggingface/pytorch-im
 ## BibTeX
 
 ```bibtex
+@article{fang2024isomorphic,
+  title={Isomorphic Pruning for Vision Models},
+  author={Fang, Gongfan and Ma, Xinyin Tan and Mi, Michael Bi and Wang, Xinchao},
+  journal={arXiv preprint arXiv:},
+  year={2024}
+}
 ```
