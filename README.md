@@ -51,6 +51,8 @@ wget https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_4.2
 ```
 ```
 pretrained
+├── convnext_small_8.5G_isomorphic.pth
+├── convnext_tiny_4.2G_isomorphic.pth
 ├── deit_0.6G_isomorphic.pth
 ├── deit_1.2G_isomorphic.pth
 ├── deit_2.6G_isomorphic.pth
