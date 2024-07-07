@@ -1,0 +1,22 @@
+torchrun --standalone --nproc_per_node=8 convnext_train.py \
+    --data-dir data/imagenet \
+    --model "convnext_base.fb_in1k" \
+    --pruned-model "output/pruned/convnext_4.2G.pth" \
+    --epochs 300 \
+    --batch-size 256 \
+    --opt adamw \
+    --lr 2e-3 \
+    --weight-decay 0.05 \
+    --sched cosine \
+    --amp \
+    --smoothing 0.1 \
+    --aa rand-m9-mstd0.5-inc1 \
+    --reprob 0.25 \
+    --drop-path 0.1 \
+    --drop 0.1 \
+    --mixup 0.2 \
+    --cutmix 1.0 \
+    --output output/finetuned/connext_4.2G \
+    --model-ema \
+    --model-ema-decay 0.9999 \
+    --color-jitter 0.0 \
