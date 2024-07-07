@@ -10,8 +10,8 @@ Similar sub-structures presents more comparable distribution of importance score
 Group sub-structure with the same computational topology and perform ranking within each isomorphic group.
 
 <div align="center">
-<img src="assets/intro.png" width="80%">
 <img src="assets/intro2.png" width="80%">
+<img src="assets/intro.png" width="80%">
 </div>
 
 ## Pre-requisites
