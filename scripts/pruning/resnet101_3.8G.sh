@@ -6,7 +6,7 @@ python prune.py --data-path data/imagenet \
     --val-batch-size 64 \
     --global-pruning \
     --taylor-batchs 100 \
-    --save-as output/pruned/resnet101_3.9G.pth  \
+    --save-as output/pruned/resnet101_3.8G.pth  \
     --val-resize 256 \
     --interpolation bilinear \
     --round-to 2 \
