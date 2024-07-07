@@ -1,6 +1,5 @@
-torch-pruning
 timm
 fastcore
 tqdm
 wandb
-torch_pruning
+torch_pruning>=1.4.0
