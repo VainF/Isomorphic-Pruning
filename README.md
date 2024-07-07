@@ -2,13 +2,6 @@
 
 Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Models]().
 
-#### Motivation: 
-Similar sub-structures presents more comparable distribution of importance scores. 
-
-#### The key idea:
-
-Group sub-structure with the same computational topology and perform ranking within each isomorphic group.
-
 <div align="center">
 <img src="assets/intro2.png" width="80%">
 <img src="assets/intro.png" width="80%">
