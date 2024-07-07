@@ -43,7 +43,7 @@ data
 
 ## Quick Start
 
-#### 1. Downloading our pruned models (Optional)
+#### 1. Download our pruned models (Optional)
 
 | Model | #MACs | #Params | Top-1 Acc. (%) | Checkpoints |
 |:-----|:-----|:-----|:-----|:----|
@@ -83,7 +83,7 @@ Accuracy: 0.8241, Loss: 0.8036
 ```
 
 
-#### 2. Evaluating pre-trained models from Timm
+#### 2. Evaluate pre-trained models from Timm
 
 Evaluate the performance of the pre-trained models from Timm on ImageNet validation set.
 
@@ -120,7 +120,7 @@ Finetune the pruned model and save the intermediate/latest/best checkpoints unde
 bash scripts/finetuning/deit_4.2G.sh
 ```
 
-#### 5. Evaluating the pruned model
+#### 5. Evaluate the pruned model
 
 The pruned model will be saved as a ``.pth`` file with the model definition. We can directly load the ``.pth`` to obain the pruned model. You can also pass the timm model name to the script to download the pre-trained model and evaluate it.
 ```bash
