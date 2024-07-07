@@ -1,15 +1,17 @@
 # Isomorphic Pruning
 
-Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Models]().
-
 > [**Isomorphic Pruning for Vision Models**]()   
 > *[Gongfan Fang](https://fangggf.github.io/), [Xinyin Ma](https://horseee.github.io/), [Michael Bi Mi](https://dblp.org/pid/317/0937.html), [Xinchao Wang](https://sites.google.com/site/sitexinchaowang/)*    
 > *[Learning and Vision Lab](http://lv-nus.org/), National University of Singapore*
-> 
+
+
+Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Models]().
+
 <div align="center">
 <img src="assets/intro2.png" width="80%">
 <img src="assets/intro.png" width="80%">
 </div>
+
 
 ## Pre-requisites
 
