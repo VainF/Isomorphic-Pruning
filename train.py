@@ -263,7 +263,7 @@ def main(args):
     if torch.distributed.get_rank() == 0:
         wandb.init(
             # set the wandb project where this run will be logged
-            project="pbench", 
+            project="Pruning", 
             name=args.model.replace('/', '_'),
             # track hyperparameters and run metadata
             config=args,

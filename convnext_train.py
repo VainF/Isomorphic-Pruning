@@ -41,8 +41,8 @@ from timm.scheduler import create_scheduler_v2, scheduler_kwargs
 from timm.utils import ApexScaler, NativeScaler
 
 import torch_pruning as tp
-import pruning_bench as pbench
-pbench.pruning.patch_timm_forward()
+import pbench
+pbench.forward_patch.patch_timm_forward()
 
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -512,6 +512,7 @@ def main():
         wandb.init(
             # set the wandb project where this run will be logged
             project="Pruning", 
+            name=args.model.replace('/', '_'),
             # track hyperparameters and run metadata
             config=args,
         )
