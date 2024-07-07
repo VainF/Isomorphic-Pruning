@@ -117,16 +117,15 @@ The pruned model will be saved as a ``.pth`` file with the model definition. We 
 python evaluate.py --model PATH_TO_PRUNED_MODEL --interpolation bicubic 
 ```
 
-## Known Issues
-
-The ConvNext models in our paper were finetuned using the [official implementation](https://github.com/facebookresearch/ConvNeXt). We provide an isolated script ``convnext_train.py`` for ConvNext finetuning and will unify the training scripts in the future.
-
 ## Results on DeiT
 
 <div align="center">
 <img src="assets/exp_deit.png" width="90%">
 </div>
 
+## Known Issues
+
+The ConvNext models in our paper were finetuned using the [official implementation](https://github.com/facebookresearch/ConvNeXt). We provide an isolated script ``convnext_train.py`` for ConvNext finetuning and will unify the training scripts in the future.
 
 ## Acknowledgement
 
