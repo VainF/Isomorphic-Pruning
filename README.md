@@ -2,7 +2,12 @@
 
 Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Models]().
 
-The key idea is to group sub-structures by their topology and perform importance ranking within each group.
+#### Motivation: 
+Similar sub-structures presents more comparable distribution of importance scores. 
+
+#### The key idea:
+
+Group sub-structure with the same computational topology and perform ranking within each isomorphic group.
 
 <div align="center">
 <img src="assets/intro.png" width="80%">
