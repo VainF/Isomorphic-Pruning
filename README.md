@@ -121,6 +121,13 @@ python evaluate.py --model PATH_TO_PRUNED_MODEL --interpolation bicubic
 
 The ConvNext models in our paper were finetuned using the [official implementation](https://github.com/facebookresearch/ConvNeXt). We provide an isolated script ``convnext_train.py`` for ConvNext finetuning and will unify the training scripts in the future.
 
+## Results on DeiT
+
+<div align="center">
+<img src="assets/exp_deit.png" width="90%">
+</div>
+
+
 ## Acknowledgement
 
 This implementation is based on [Timm](https://github.com/huggingface/pytorch-image-models) and [Torchvision Reference](https://github.com/pytorch/vision/tree/main/references/classification). 
