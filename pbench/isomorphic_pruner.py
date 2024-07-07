@@ -9,6 +9,11 @@ import torch.nn.functional as F
 
 
 class IsomorphicPruner(tp.algorithms.MetaPruner):
+    """ Isomorphic Pruner
+
+    It will group sub-structures in a network based on their graph isomorphism.
+    The importance ranking will be performed isolatedly within each group.
+    """
     def __init__(
         self,
         model: nn.Module, # a simple pytorch model
@@ -122,14 +127,15 @@ class IsomorphicPruner(tp.algorithms.MetaPruner):
                     # no grouping
                     dim_imp = imp
 
-                # Graphs will always be generated in the forwarding order
-                group_tag = ""
+                # The graph edges will be ordered in DepGraph,
+                # so we can directly do a one-to-one comparison.
+                group_tag = "" # we transform the graph structure into a string tag for comparison
                 for dep, _ in group:
-                    # to check the isomorphism, all connected nodes should have the same tag, 
-                    # i.e., the same module type & pruning dim
                     tag_source = "%s_%s"%(type(dep.source.module), "out" if self.DG.is_out_channel_pruning_fn(dep.handler) else "in")
                     tag_target = "%s_%s"%(type(dep.target.module), "out" if self.DG.is_out_channel_pruning_fn(dep.handler) else "in")
                     group_tag += "%s_%s"%(tag_source, tag_target)
+                
+                # if isomorphic, the source and target modules should have the same layer type and pruning dim
                 if group_tag not in isomorphic_groups:
                     # New isomorphic group
                     isomorphic_groups[group_tag] = []
@@ -150,12 +156,13 @@ class IsomorphicPruner(tp.algorithms.MetaPruner):
             return
         
         ##############################################
-        # 2. Thresholding by concatenating all importance scores
+        # 2. Thresholding by concatenating importance
         ##############################################
         
-        # Find the threshold for global pruning
+        # Find the threshold for each isomorphic group
         for group_type, (group_tag, global_importance) in enumerate(isomorphic_groups.items()):
             print("Prune Type {}, Tag {}".format(group_type, group_tag))
+
             if len(global_importance)>0:
                 concat_imp = torch.cat([local_imp[-1] for local_imp in global_importance], dim=0)
                 target_pruning_ratio = self.get_target_pruning_ratio(global_importance[0][0][0].dep.target.module)
@@ -223,7 +230,6 @@ class IsomorphicPruner(tp.algorithms.MetaPruner):
                         pruning_indices.append(_pruning_indices)
                             
                 # Prune heads
-                
                 if len(global_head_importance)>0 and n_heads_removed>0:
                     if group in global_head_importance:
                         qkv_layers, head_imp = global_head_importance[group]
