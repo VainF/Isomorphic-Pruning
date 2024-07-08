@@ -52,7 +52,7 @@ data
 | DeiT-1.2G | 1.21 G | 5.74 M | 77.50 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_1.2G_isomorphic.pth) |
 | DeiT-0.6G | 0.62 G | 3.08 M | 72.60 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_0.6G_isomorphic.pth) |
 | ConvNext-S-8.5G | 8.48 G | 47.36 M | 83.17 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/convnext_small_8.5G_isomorphic.pth) |
-| ConvNext-T-4.2G | 4.19 G | 25.32 | 82.19 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/convnext_tiny_4.2G_isomorphic.pth) |
+| ConvNext-T-4.2G | 4.19 G | 25.32 M | 82.19 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/convnext_tiny_4.2G_isomorphic.pth) |
 
 
 The full list of pruned models can be found [here](https://github.com/VainF/Isomorphic-Pruning/releases/tag/v0.1)
