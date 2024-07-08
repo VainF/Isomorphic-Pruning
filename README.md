@@ -1,8 +1,8 @@
 # Isomorphic Pruning
 
-Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Models]().
+Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Models](https://arxiv.org/abs/2407.04616).
 
-> [**Isomorphic Pruning for Vision Models**]()   
+> [**Isomorphic Pruning for Vision Models**](https://arxiv.org/abs/2407.04616)   
 > *[Gongfan Fang](https://fangggf.github.io/), [Xinyin Ma](https://horseee.github.io/), [Michael Bi Mi](https://dblp.org/pid/317/0937.html), [Xinchao Wang](https://sites.google.com/site/sitexinchaowang/)*    
 > *[Learning and Vision Lab](http://lv-nus.org/), National University of Singapore*
 
@@ -43,7 +43,18 @@ data
 
 ## Quick Start
 
-#### 1. Downloading our pruned models (Optional)
+#### 1. Download our pruned models (Optional)
+
+| Model | #MACs | #Params | Top-1 Acc. (%) | Checkpoints |
+|:-----|:-----|:-----|:-----|:----|
+| DeiT-4.2G | 4.16 G | 20.69 M | 82.41 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_4.2G_isomorphic.pth) |
+| DeiT-2.6G | 2.61 G | 13.07 M | 81.13 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_2.6G_isomorphic.pth) |
+| DeiT-1.2G | 1.21 G | 5.74 M | 77.50 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_1.2G_isomorphic.pth) |
+| DeiT-0.6G | 0.62 G | 3.08 M | 72.60 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/deit_0.6G_isomorphic.pth) |
+| ConvNext-S-8.5G | 8.48 G | 47.36 M | 83.17 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/convnext_small_8.5G_isomorphic.pth) |
+| ConvNext-T-4.2G | 4.19 G | 25.32 | 82.19 | [Download](https://github.com/VainF/Isomorphic-Pruning/releases/download/v0.1/convnext_tiny_4.2G_isomorphic.pth) |
+
+
 The full list of pruned models can be found [here](https://github.com/VainF/Isomorphic-Pruning/releases/tag/v0.1)
 
 ```bash
@@ -72,7 +83,7 @@ Accuracy: 0.8241, Loss: 0.8036
 ```
 
 
-#### 2. Evaluating pre-trained models from Timm
+#### 2. Evaluate pre-trained models from Timm
 
 Evaluate the performance of the pre-trained models from Timm on ImageNet validation set.
 
@@ -109,7 +120,7 @@ Finetune the pruned model and save the intermediate/latest/best checkpoints unde
 bash scripts/finetuning/deit_4.2G.sh
 ```
 
-#### 5. Evaluating the pruned model
+#### 5. Evaluate the pruned model
 
 The pruned model will be saved as a ``.pth`` file with the model definition. We can directly load the ``.pth`` to obain the pruned model. You can also pass the timm model name to the script to download the pre-trained model and evaluate it.
 ```bash
@@ -137,7 +148,7 @@ This implementation is based on [Timm](https://github.com/huggingface/pytorch-im
 @article{fang2024isomorphic,
   title={Isomorphic Pruning for Vision Models},
   author={Fang, Gongfan and Ma, Xinyin Tan and Mi, Michael Bi and Wang, Xinchao},
-  journal={arXiv preprint arXiv:},
+  journal={arXiv preprint arXiv:2407.04616},
   year={2024}
 }
 ```
