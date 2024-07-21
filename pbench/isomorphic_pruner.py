@@ -7,6 +7,10 @@ import timm
 from fastcore.basics import patch_to
 import torch.nn.functional as F
 
+# !!! IMPORTANT !!!
+# This implementation requires Torch-Pruning<=1.4.0
+# We already implement a general isomorphic pruner in Torch-Pruning>=1.4.1, in a more general way.
+# We provide this implementation for reference only.
 
 class IsomorphicPruner(tp.algorithms.MetaPruner):
     """ Isomorphic Pruner

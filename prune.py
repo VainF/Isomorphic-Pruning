@@ -156,18 +156,22 @@ def main():
         acc_ori, loss_ori = validate_model(model, val_loader, device)
         print("Accuracy: %.4f, Loss: %.4f"%(acc_ori, loss_ori))
 
-    pruning_ratio_dict = {}
-    if args.head_dim_pruning_ratio is not None:
-        for m in model.modules():
-            if isinstance(m, timm.models.vision_transformer.Attention):
-                pruning_ratio_dict[m] = args.head_dim_pruning_ratio
-
-    PrunerCLS = tp.pruner.MetaPruner if args.no_isomorphic else pbench.isomorphic_pruner.IsomorphicPruner
-    pruner = PrunerCLS(
+    if not args.no_isomorphic:
+        head_dim_scope = []
+        if args.head_dim_pruning_ratio is not None:
+            for m in model.modules():
+                if isinstance(m, timm.models.vision_transformer.Attention):
+                    head_dim_scope.append(m.qkv)
+        pruning_ratio_dict = {tuple(head_dim_scope): args.head_dim_pruning_ratio}
+    else:
+        pruning_ratio_dict = None
+        
+    pruner = tp.pruner.MetaPruner(
         model, 
         example_inputs=example_inputs,
         global_pruning=args.global_pruning, # If False, a uniform sparsity will be assigned to different layers.
         importance=imp, # importance criterion for parameter selection
+        isomorphic=not args.no_isomorphic,
         pruning_ratio=args.pruning_ratio, # target sparsity
         pruning_ratio_dict=pruning_ratio_dict,
         ignored_layers=ignored_layers, # ignored layers
