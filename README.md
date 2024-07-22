@@ -128,7 +128,7 @@ The pruned model will be saved as a ``.pth`` file with the model definition. We 
 python evaluate.py --model PATH_TO_PRUNED_MODEL --interpolation bicubic 
 ```
 
-## Results on DeiT
+## Results for DeiT
 
 <div align="center">
 <img src="assets/exp_deit.png" width="90%">
