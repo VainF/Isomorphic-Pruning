@@ -23,7 +23,7 @@ pip install -r requirements.txt
 ```
 
 #### ImageNet-1K
-Please prepare the ImageNet dataset as follows:
+Please prepare the ImageNet dataset under ``./data/imagenet`` as follows:
 ```
 data
 ├── imagenet
