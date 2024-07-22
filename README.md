@@ -22,7 +22,7 @@ Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Mode
 pip install -r requirements.txt
 ```
 
-#### ImageNet
+#### ImageNet-1K
 Please prepare the ImageNet dataset as follows:
 ```
 data
