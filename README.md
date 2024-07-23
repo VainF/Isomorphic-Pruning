@@ -2,6 +2,9 @@
 
 Official implementation of the ECCV'24 paper [Isomorphic Pruning for Vision Models](https://arxiv.org/abs/2407.04616).
 
+Isomorphic Pruning has been integrated into [Torch-Pruning (v1.4.1)](https://github.com/VainF/Torch-Pruning?tab=readme-ov-file#global-pruning-and-isomorphic-pruning). 
+
+
 > [**Isomorphic Pruning for Vision Models**](https://arxiv.org/abs/2407.04616)   
 > *[Gongfan Fang](https://fangggf.github.io/), [Xinyin Ma](https://horseee.github.io/), [Michael Bi Mi](https://dblp.org/pid/317/0937.html), [Xinchao Wang](https://sites.google.com/site/sitexinchaowang/)*    
 > *[Learning and Vision Lab](http://lv-nus.org/), National University of Singapore*
